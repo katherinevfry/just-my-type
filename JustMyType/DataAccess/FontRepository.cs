@@ -27,5 +27,16 @@ namespace JustMyType.DataAccess
 
             return userFonts;
         }
+
+        internal void Add(Fonts newFont)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var sqlString = @"insert into fonts(name, style, source, userId)
+                                                output inserted.id
+                                                values(@name, @style, @source, @userId)";
+            var id = db.ExecuteScalar<Guid>(sqlString, newFont);
+            newFont.Id = id;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using JustMyType.DataAccess;
+using JustMyType.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,16 @@ namespace JustMyType.Controllers
         }
 
         [HttpGet("/users/fonts/{userId}")]
-        public IActionResult GetUserFonts(Guid id)
+        public IActionResult GetUserFonts(Guid userId)
         {
-            return Ok(_repo.GetUserFonts(id));
+            return Ok(_repo.GetUserFonts(userId));
+        }
+
+        [HttpPost]
+        public IActionResult AddFont(Fonts newFont)
+        {
+            _repo.Add(newFont);
+            return Created($"/api/fonts/{newFont.Id}", newFont);
         }
     }
 }
