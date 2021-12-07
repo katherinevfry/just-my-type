@@ -1,3 +1,4 @@
+using JustMyType.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,11 @@ namespace JustMyType
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddTransient<CategoryFontsRepository>();
+            services.AddTransient<CategoryRepository>();
+            services.AddTransient<FontRepository>();
+            services.AddTransient<UserRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -43,6 +49,8 @@ namespace JustMyType
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JustMyType v1"));
             }
+
+            app.UseCors(cfg => cfg.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseHttpsRedirection();
 
