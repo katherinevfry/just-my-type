@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using JustMyType.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace JustMyType.DataAccess
         {
             _connectionString = config.GetConnectionString("JustMyType");
         }
+
     }
 }
