@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TwbU0sTdIvQNNJw0mfHbphuMIUYZ4S/921ma6yMMijIAy3ndFuxOqEKtr7NSSAXpkf4l9E28Z7SHhrSRmFGnHA==",
+  "dgSpecHash": "LBWdFTm+3O9+e9LUDCV81W4/IvyRmuj9TDlVf6WH0WLlkEfLekYNGPIUqFpu3kyiLm8ZBQQ4R96wje2L7ctxWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\katyf\\source\\repos\\JustMyType\\JustMyType\\JustMyType.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\katyf\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\katyf\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\katyf\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\katyf\\.nuget\\packages\\restsharp\\106.13.0\\restsharp.106.13.0.nupkg.sha512",
     "C:\\Users\\katyf\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\katyf\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\katyf\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

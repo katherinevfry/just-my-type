@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using JustMyType.Models;
 using Microsoft.Extensions.Configuration;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -38,5 +39,30 @@ namespace JustMyType.DataAccess
             var id = db.ExecuteScalar<Guid>(sqlString, newFont);
             newFont.Id = id;
         }
+
+        internal void Remove(Guid id)
+        {
+            using var db = new SqlConnection(_connectionString);
+            //first delete the font Categories
+            var categoriesFontsQuery = @"Delete From categoriesFonts Where fontId = @id";
+
+            db.Execute(categoriesFontsQuery, new { id });
+ 
+            var sql = @"Delete From Fonts Where Id = @id";
+
+            db.Execute(sql, new { id });
+        }
+
+        //internal IRestResponse GoogleFonts()
+        //{
+
+        //    var client = new RestClient("https://www.googleapis.com/");
+
+        //    var request = new RestRequest("webfonts/v1/webfonts?key=AIzaSyBQvsOQ85vFGS7UqDJKAjVWOrtcPtVc4Dw", Method.GET);
+
+        //    var response = client.Execute(request);
+
+        //    return response;
+        //}
     }
 }

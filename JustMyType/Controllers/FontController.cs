@@ -31,5 +31,19 @@ namespace JustMyType.Controllers
             _repo.Add(newFont);
             return Created($"/api/fonts/{newFont.Id}", newFont);
         }
+
+        [HttpDelete]
+        public IActionResult DeleteFont(Guid id)
+        {
+            _repo.Remove(id);
+
+            return Ok();
+        }
+
+        //[HttpGet("/googleFonts")]
+        //public IActionResult GetGoogleFonts()
+        //{
+        //   return Ok(_repo.GoogleFonts());
+        //}
     }
 }
