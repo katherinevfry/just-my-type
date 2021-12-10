@@ -41,7 +41,7 @@ namespace JustMyType.Controllers
             return Ok();
         }
 
-        [HttpGet("/categories/fonts")] 
+        [HttpGet("/categories/fonts/{categoryId}")] 
         public IActionResult GetFontsByCat(Guid categoryId)
         {
             return Ok(_repo.GetFontsByCategory(categoryId));

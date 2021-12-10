@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../src/App.css';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { signInUser } from "./data/auth";
+// import { signInUser } from "./data/auth";
+import Home from './Views/Home';
 
 function App() {
 const [user, setUser] = useState({});
@@ -21,7 +22,7 @@ console.warn(user);
 
   return (
     <div className="App">
-     <button onClick={signInUser}/>
+     <Home user={user}/>
     </div>
   );
 }
