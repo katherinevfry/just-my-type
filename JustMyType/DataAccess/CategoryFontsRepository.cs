@@ -40,13 +40,27 @@ namespace JustMyType.DataAccess
 
         }
 
-        internal void Remove(Guid id)
+        internal void Remove(Guid fontId)
         {
             using var db = new SqlConnection(_connectionString);
 
-            var sqlString = @"delete from categoriesFonts where id = @id";
+            var sqlString = @"delete from categoriesFonts where fontId = @fontId";
 
-            db.Execute(sqlString, new { id });
+            db.Execute(sqlString, new { fontId });
         }
+
+        internal IEnumerable<Fonts> GetFontsByCategory(Guid categoryId)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var sqlString = @"select f.* from categoriesFonts cf 
+                                            join fonts f 
+                                            on cf.fontId = f.id 
+                                            where cf.categoryId = @categoryId";
+            var categoryFonts = db.Query<Fonts>(sqlString, new { categoryId });
+
+            return categoryFonts;
+        }
+
     }
 }

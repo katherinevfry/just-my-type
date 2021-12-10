@@ -26,7 +26,7 @@ namespace JustMyType.Controllers
             return Ok(_repo.GetCategoriesFontsByCategoryId(categoryId));
         }
 
-        [HttpPost]
+        [HttpPost("/categoryFonts/post")]
         public IActionResult AddCategory(CategoriesFonts newCategoryFont)
         {
             _repo.Add(newCategoryFont);
@@ -39,6 +39,12 @@ namespace JustMyType.Controllers
             _repo.Remove(id);
 
             return Ok();
+        }
+
+        [HttpGet("/categories/fonts")] 
+        public IActionResult GetFontsByCat(Guid categoryId)
+        {
+            return Ok(_repo.GetFontsByCategory(categoryId));
         }
     }
 }

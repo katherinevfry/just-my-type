@@ -26,11 +26,19 @@ namespace JustMyType.Controllers
             return Ok(_repo.GetUserCategories(userId));
         }
 
-        [HttpPost]
+        [HttpPost("/categories/post")]
         public IActionResult AddCategory(Categories newCategory)
         {
             _repo.Add(newCategory);
             return Created($"/api/categories/{newCategory.Id}", newCategory);
+        }
+
+        [HttpDelete("/categories/delete/{id}")]
+        public IActionResult DeleteCategory(Guid id)
+        {
+            _repo.Remove(id);
+
+            return Ok();
         }
     }
 

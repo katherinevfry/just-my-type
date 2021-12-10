@@ -38,5 +38,19 @@ namespace JustMyType.DataAccess
             var id = db.ExecuteScalar<Guid>(sqlString, newCategory);
             newCategory.Id = id;
         }
+
+        internal void Remove(Guid id)
+        {
+            using var db = new SqlConnection(_connectionString);
+            //first delete the font Categories
+            var categoriesFontsQuery = @"Delete From categoriesFonts Where categoryId = @id";
+
+            db.Execute(categoriesFontsQuery, new { id });
+
+            var sql = @"Delete From categories Where Id = @id";
+
+            db.Execute(sql, new { id });
+        }
+
     }
 }

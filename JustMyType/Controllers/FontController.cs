@@ -25,14 +25,14 @@ namespace JustMyType.Controllers
             return Ok(_repo.GetUserFonts(userId));
         }
 
-        [HttpPost]
+        [HttpPost("/fonts/post")]
         public IActionResult AddFont(Fonts newFont)
         {
             _repo.Add(newFont);
             return Created($"/api/fonts/{newFont.Id}", newFont);
         }
 
-        [HttpDelete]
+        [HttpDelete("/fonts/delete/{id}")]
         public IActionResult DeleteFont(Guid id)
         {
             _repo.Remove(id);
