@@ -33,6 +33,7 @@ namespace JustMyType
             services.AddTransient<FontRepository>();
             services.AddTransient<UserRepository>();
 
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
