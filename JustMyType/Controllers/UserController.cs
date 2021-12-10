@@ -21,7 +21,7 @@ namespace JustMyType.Controllers
             _repo = repo;
         }
 
-        [HttpGet("/user/fbkey")]
+        [HttpGet("/user/fbkey/{fbkey}")]
         public IActionResult GetFbUser(string fbkey)
         {
             return Ok(_repo.GetUserByFb(fbkey));

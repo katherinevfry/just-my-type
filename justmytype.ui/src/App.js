@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import '../src/App.css';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import { signInUser } from "./data/auth";
 
 function App() {
+const [user, setUser] = useState({});
+
+useEffect(() => {
+  firebase.auth().onAuthStateChanged((authed) => {
+    if (authed) {
+      setUser(authed);
+    } else {
+      setUser(false);
+    }
+  });
+}, []);
+
+console.warn(user);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Stuff!!!!
-        </a>
-      </header>
+     <button onClick={signInUser}/>
     </div>
   );
 }
