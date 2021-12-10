@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import '../src/App.css';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-// import { signInUser } from "./data/auth";
-import Home from './Views/Home';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './data/Routes';
+import AuthBtn from './Components/AuthBtn';
 
 function App() {
 const [user, setUser] = useState({});
@@ -22,7 +23,10 @@ console.warn(user);
 
   return (
     <div className="App">
-     <Home user={user}/>
+     <Router>
+      <AuthBtn />
+       <Routes user={user}/>
+     </Router>
     </div>
   );
 }

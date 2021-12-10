@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import ScriptTag from 'react-script-tag';
+import styled from 'styled-components';
 import { getCategoryFonts, getUserCategories } from '../data/categoryData';
-
-var WebFont = require('webfontloader');
-
-WebFont.load({
-  google: {
-    families: ['Lobster']
-  }
-});
 
 
 export default function Home({user}) {
@@ -19,9 +13,20 @@ export default function Home({user}) {
 
 console.warn(resp);
 
+const fontFamily = "Redacted Script";
+
+const StyledH1 = styled.h1`
+font-family: ${fontFamily}
+`;
+
   return (
+    <>
+    <head><link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={`https://fonts.googleapis.com/css2?family=${fontFamily}&display=swap`}rel="stylesheet" /></head>
     <div>
-      <h1>Home</h1>
+      <StyledH1>Home</StyledH1>
     </div>
+    </>
   )
 };
