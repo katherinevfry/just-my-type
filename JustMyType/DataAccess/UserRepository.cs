@@ -17,13 +17,13 @@ namespace JustMyType.DataAccess
             _connectionString = config.GetConnectionString("JustMyType");
         }
 
-        internal User GetUserByFb(string fbKey)
+        internal User GetUserByFb(string firebaseKey)
         {
             using var db = new SqlConnection(_connectionString);
 
-            var sqlString = @"select * from users where firebaseKey = @fbKey";
+            var sqlString = @"select * from users where firebaseKey = @firebaseKey";
 
-            var user = db.QuerySingleOrDefault<User>(sqlString, new { firebaseKey = fbKey });
+            var user = db.QuerySingleOrDefault<User>(sqlString, new { firebaseKey });
 
             return user;
         }
@@ -34,11 +34,10 @@ namespace JustMyType.DataAccess
 
             var sqlString = @"insert into users(firebaseKey, fullName)
                                                 output inserted.id
-                                                values(@firebaseKey, @fullName";
+                                                values(@firebaseKey, @fullName)";
             var id = db.ExecuteScalar<Guid>(sqlString, newUser);
             newUser.Id = id;
         }
     }
 
-    }
 }
