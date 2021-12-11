@@ -15,7 +15,7 @@ export default function Routes({ user }) {
   return (
     <div>
       <Switch>
-      <Route exact path='/' component={Home} />
+      <Route exact path='/' component={() => <Home user={user}/>} />
       <PrivateRoute exact path='/myfonts' user={user} component={() => <UserPage user={user} />}/>
       </Switch>
     </div>

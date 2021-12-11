@@ -20,14 +20,13 @@ useEffect(() => {
   });
 }, []);
 
-// const authFunc = user ? signOutUser() : signInUser();
-// const buttonText = user ? "Sign Out." : "Sign In."
+console.warn(user);
 
   return (
     <div className="App">
      <Router>
-      <AuthBtn onClick={user ? signOutUser : signInUser} buttonText={user ? "Sign Out." : "Sign In."}/>
        <Routes user={user}/>
+       <AuthBtn onClick={user ? signOutUser : signInUser} buttonText={user ? "Sign Out." : "Sign In."}/>
      </Router>
     </div>
   );

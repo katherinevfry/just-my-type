@@ -13,14 +13,14 @@ const signInUser = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
 
   firebase.auth().signInWithPopup(provider).then((user) => {
-    getUserByFBKey(user.user?.uid).then(() => {
-    
-        const userInfo = {
-          FirebaseKey: user.user?.uid,
-          FullName: user.user?.displayName
-         }
-        createNewUser(userInfo);
-
+    getUserByFBKey(user.user?.uid).then((resp) => {
+    if (resp.length === 0) {
+      const userInfo = {
+        FirebaseKey: user.user?.uid,
+        FullName: user.user?.displayName
+       }
+      createNewUser(userInfo);
+    }
     });
   });
 };

@@ -6,6 +6,11 @@ font-size: 3em;
 margin-top: 40px;
 `;
 
+export const StyledH2 = styled.h1`
+font-family: ${props => props.fontFamily};
+font-size: 1.5em;
+`;
+
 export const BasicBtn = styled.button`
 width: 5rem;
 height: 2rem;
@@ -16,3 +21,14 @@ color: white;
 cursor: pointer;
 margin: 10px;
 `;
+
+export const FlexyDiv = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+margin: 20px;
+`;
+
+export const CardDiv = styled.div`
+width: 20rem;
+`

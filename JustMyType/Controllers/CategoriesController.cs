@@ -30,7 +30,7 @@ namespace JustMyType.Controllers
         public IActionResult AddCategory(Categories newCategory)
         {
             _repo.Add(newCategory);
-            return Created($"/api/categories/{newCategory.Id}", newCategory);
+            return Created($"/categories/post/{newCategory.Id}", newCategory);
         }
 
         [HttpDelete("/categories/delete/{id}")]
