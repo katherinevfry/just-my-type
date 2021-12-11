@@ -1,16 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
-import { signInUser } from '../data/auth';
+import { BasicBtn } from './styles'
 
-const StyledBtn = styled.button`
-width: 10rem;
-height: 1 rem;
-border-radius: 25px;
-color: pink;
-`;
 
-export default function AuthBtn() {
+export default function AuthBtn({ onClick, buttonText }) {
   return (
-    <StyledBtn role="button" onClick={signInUser}>Log In</StyledBtn>
+    <BasicBtn color="#A51080" role="button" onClick={onClick}>{buttonText}</BasicBtn>
   )
 }

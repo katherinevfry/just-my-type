@@ -5,6 +5,7 @@ import 'firebase/compat/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './data/Routes';
 import AuthBtn from './Components/AuthBtn';
+import { signInUser, signOutUser } from './data/auth';
 
 function App() {
 const [user, setUser] = useState({});
@@ -19,12 +20,13 @@ useEffect(() => {
   });
 }, []);
 
-console.warn(user);
+// const authFunc = user ? signOutUser() : signInUser();
+// const buttonText = user ? "Sign Out." : "Sign In."
 
   return (
     <div className="App">
      <Router>
-      <AuthBtn />
+      <AuthBtn onClick={user ? signOutUser : signInUser} buttonText={user ? "Sign Out." : "Sign In."}/>
        <Routes user={user}/>
      </Router>
     </div>

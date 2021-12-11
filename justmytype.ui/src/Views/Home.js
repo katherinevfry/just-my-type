@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import ScriptTag from 'react-script-tag';
-import styled from 'styled-components';
-import { getCategoryFonts, getUserCategories } from '../data/categoryData';
+import { StyledH1 } from '../Components/styles';
+import { getCategoryFonts } from '../data/categoryData';
+
 
 
 export default function Home({user}) {
@@ -13,20 +13,23 @@ export default function Home({user}) {
 
 console.warn(resp);
 
-const fontFamily = "Redacted Script";
+const fontFamily = "Germania One";
 
-const StyledH1 = styled.h1`
-font-family: ${fontFamily}
-`;
+const header = () => (
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href={`https://fonts.googleapis.com/css2?family=${fontFamily}&display=swap`}rel="stylesheet" />
+  </head>
+);
 
   return (
     <>
-    <head><link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href={`https://fonts.googleapis.com/css2?family=${fontFamily}&display=swap`}rel="stylesheet" /></head>
+    {header()}
     <div>
-      <StyledH1>Home</StyledH1>
+      <StyledH1 fontFamily={fontFamily}>Just My Type</StyledH1>
     </div>
     </>
+
   )
 };
