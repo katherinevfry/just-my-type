@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import FontCard from '../Components/FontCard';
-import { BasicBtn, FlexyDiv, StyledH1 } from '../Components/styles';
+import { BasicBtn, FlexyDiv } from '../Components/styles';
 import { getGoogleFonts } from '../data/categoryData';
 import { saveFont } from '../data/fontData';
 import { getUserByFBKey } from '../data/userData';
@@ -17,6 +17,7 @@ export default function Home({ user }) {
   useEffect(() => {
     getGoogleFonts().then((resp) => setResp(resp.items));
     getUserByFBKey(user?.multiFactor?.user?.uid).then(setDbUser);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.warn(dbUser);

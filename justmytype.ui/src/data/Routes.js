@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router';
+import Categories from '../Views/Categories';
 import Home from '../Views/Home';
 import UserPage from '../Views/UserPage';
 
@@ -17,6 +18,7 @@ export default function Routes({ user }) {
       <Switch>
       <Route exact path='/' component={() => <Home user={user}/>} />
       <PrivateRoute exact path='/myfonts' user={user} component={() => <UserPage user={user} />}/>
+      <PrivateRoute exact path='/category/:id' user={user} component={() => <Categories user={user} />} />
       </Switch>
     </div>
   )

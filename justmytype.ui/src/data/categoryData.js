@@ -18,7 +18,7 @@ const createCategory = (category) => new Promise((resolve, reject) => {
 
 
 const deleteCategory = (id) => new Promise((resolve, reject) => {
-  axios.post(`${baseUrl}/categories/delete/${id}`)
+  axios.delete(`${baseUrl}/categories/delete/${id}`)
   .then(response => resolve(response.data))
   .catch(error => reject(error));
 });
@@ -26,13 +26,13 @@ const deleteCategory = (id) => new Promise((resolve, reject) => {
 //category font calls
 
 const addFontToCategory = (categoryFont) => new Promise((resolve, reject) => {
-  axios.post(`${baseUrl}/categoryFonts/post`)
+  axios.post(`${baseUrl}/categoryFonts/post`, categoryFont)
   .then(response => resolve(response.data))
   .catch(error => reject(error));
 });
 
 const removeFontFromCategory = (id) => new Promise((resolve, reject) => {
-  axios.post(`${baseUrl}/delete/${id}`)
+  axios.delete(`${baseUrl}/delete/${id}`)
   .then(response => resolve(response.data))
   .catch(error => reject(error));
 });
