@@ -4,8 +4,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './data/Routes';
-import AuthBtn from './Components/AuthBtn';
-import { signInUser, signOutUser } from './data/auth';
+import NavBar from './Components/NavBar';
 
 function App() {
 const [user, setUser] = useState({});
@@ -25,8 +24,8 @@ console.warn(user);
   return (
     <div className="App">
      <Router>
+       <NavBar user={user}/>
        <Routes user={user}/>
-       <AuthBtn onClick={user ? signOutUser : signInUser} buttonText={user ? "Sign Out." : "Sign In."}/>
      </Router>
     </div>
   );
