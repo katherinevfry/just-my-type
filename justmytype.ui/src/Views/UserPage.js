@@ -16,7 +16,6 @@ export default function UserPage({ user }) {
     userId: "",
   })
   const [updateSwitch, setUpdateSwitch] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
 
 
@@ -72,11 +71,7 @@ const handleInputChange = (e) => {
     ? <FlexyDiv>
       {myFonts.map((font) => (
       <>
-      <FontCard id={font.id} styledText={font.name} fontFamily={font.name} isUserFont fontId={font.id} setUpdateSwitch={setUpdateSwitch} handleShow={() => setShowModal(true)} />
-      {showModal
-        ? <ModalComp showModal={showModal} setShowModal={setShowModal} user={user} fontId={font.id}/>
-        : null
-        }
+      <FontCard id={font.id} styledText={font.name} fontFamily={font.name} isUserFont fontId={font.id} setUpdateSwitch={setUpdateSwitch} user={user} showModalButton />
       </>
     ))}
     </FlexyDiv>

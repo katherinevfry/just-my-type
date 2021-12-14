@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import { BasicBtn, CardDiv, StyledH1, StyledH2 } from './styles'
 import { deleteFont } from '../data/fontData';
+import ModalComp from './Modal';
+import { removeFontFromCategory } from '../data/categoryData';
   
 
-export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, fontId, setUpdateSwitch, handleShow }) {
+export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, fontId, setUpdateSwitch, user, showModalButton }) {
+  const [showModal, setShowModal] = useState(false);
   const header = () => (
     <head>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,6 +19,10 @@ export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, 
     const deleteUserFont = () => {
       deleteFont(fontId).then(setUpdateSwitch);
     }
+
+    const removeFromCat = () => {
+      removeFontFromCategory(fontId).then(setUpdateSwitch);
+    };
 
   return (
     <>
@@ -32,9 +39,16 @@ export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, 
       {isUserFont
       ? <div>
           <BasicBtn role="button" color="#FF2ECC" onClick={deleteUserFont}>Delete</BasicBtn>
-          <BasicBtn role="button" color="#FF2ECC" onClick={handleShow}>Add to Category</BasicBtn>
+          {showModalButton
+          ? <BasicBtn role="button" color="#FF2ECC" onClick={() => setShowModal(true)}>Add to Category</BasicBtn>
+          : <BasicBtn role="button" color="#FF2eCC" onClick={removeFromCat}>Remove from Category</BasicBtn>
+          }
         </div>
       : null
+      }
+      {isUserFont && showModal
+        ? <ModalComp showModal={showModal} setShowModal={setShowModal} user={user} fontId={fontId} />
+        : null
       }
       </CardDiv>
     </>

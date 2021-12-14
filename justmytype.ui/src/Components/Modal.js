@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, ModalHeader, ModalBody, Button, Form, Label, Input } from 'reactstrap';
+import { useHistory } from 'react-router';
+import { Modal, ModalHeader, ModalBody, Form, Label, Input } from 'reactstrap';
 import { addFontToCategory, getUserCategories } from '../data/categoryData';
 import { getUserByFBKey } from '../data/userData';
 import { BasicBtn } from './styles';
@@ -11,6 +12,8 @@ export default function ModalComp({ setShowModal, showModal, user, fontId }) {
     fontId: fontId || "",
     categoryId: ""
   });
+  const history = useHistory();
+
 
   useEffect(() => {
     getUserByFBKey(user?.multiFactor?.user?.uid).then((resp) => {
@@ -19,9 +22,10 @@ export default function ModalComp({ setShowModal, showModal, user, fontId }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    addFontToCategory(newRel).then(console.warn(newRel));
+    await addFontToCategory(newRel)
+    history.push(`category/${newRel.categoryId}`);
   };
 
   const handleInputChange = (e) => {
