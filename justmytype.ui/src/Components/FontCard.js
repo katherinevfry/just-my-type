@@ -4,7 +4,7 @@ import { BasicBtn, CardDiv, StyledH1, StyledH2 } from './styles'
 import { deleteFont } from '../data/fontData';
   
 
-export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, fontId, setUpdateSwitch }) {
+export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, fontId, setUpdateSwitch, handleShow }) {
   const header = () => (
     <head>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,6 +32,7 @@ export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, 
       {isUserFont
       ? <div>
           <BasicBtn role="button" color="#FF2ECC" onClick={deleteUserFont}>Delete</BasicBtn>
+          <BasicBtn role="button" color="#FF2ECC" onClick={handleShow}>Add to Category</BasicBtn>
         </div>
       : null
       }

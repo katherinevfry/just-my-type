@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import FontCard from '../Components/FontCard';
+import ModalComp from '../Components/Modal';
 import { BasicBtn, FlexyDiv } from '../Components/styles';
 import { createCategory, getUserCategories } from '../data/categoryData';
 import { getUserFonts } from '../data/fontData';
@@ -15,6 +16,9 @@ export default function UserPage({ user }) {
     userId: "",
   })
   const [updateSwitch, setUpdateSwitch] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+
 
 const history = useHistory();
 
@@ -67,11 +71,18 @@ const handleInputChange = (e) => {
     {myFonts
     ? <FlexyDiv>
       {myFonts.map((font) => (
-      <FontCard id={font.id} styledText={font.name} fontFamily={font.name} isUserFont fontId={font.id} setUpdateSwitch={setUpdateSwitch}/>
+      <>
+      <FontCard id={font.id} styledText={font.name} fontFamily={font.name} isUserFont fontId={font.id} setUpdateSwitch={setUpdateSwitch} handleShow={() => setShowModal(true)} />
+      {showModal
+        ? <ModalComp showModal={showModal} setShowModal={setShowModal} user={user} fontId={font.id}/>
+        : null
+        }
+      </>
     ))}
     </FlexyDiv>
     : "You have no saved fonts"
     }
+  
     </div>
   )
 }
