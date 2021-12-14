@@ -5,7 +5,7 @@ import { BasicBtn } from '../Components/styles';
 import { deleteCategory, getCategoryFonts } from '../data/categoryData';
 
 export default function Categories({ user }) {
-  const { id } = useParams();
+  const { name, id } = useParams();
   const [catFonts, setCatFonts] = useState([]);
   const [updateSwitch, setUpdateSwitch] = useState(false);
   const history = useHistory();
@@ -22,7 +22,7 @@ const deleteCat = () => {
 
   return (
     <div>
-      <h1>Categories</h1>
+      <h1>{name}</h1>
       {catFonts
       ? catFonts.map((font) => (
         <FontCard id={font.id} styledText={font.name} fontFamily={font.name} isUserFont fontId={font.id} setUpdateSwitch={setUpdateSwitch} handleShow={() => {}} />

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 import { Modal, ModalHeader, ModalBody, Form, Label, Input } from 'reactstrap';
 import { addFontToCategory, getUserCategories } from '../data/categoryData';
 import { getUserByFBKey } from '../data/userData';
@@ -10,10 +9,8 @@ export default function ModalComp({ setShowModal, showModal, user, fontId }) {
   const toggle = () => setShowModal(!showModal);
   const [newRel, setNewRel] = useState({
     fontId: fontId || "",
-    categoryId: ""
+    categoryId: "",
   });
-  const history = useHistory();
-
 
   useEffect(() => {
     getUserByFBKey(user?.multiFactor?.user?.uid).then((resp) => {
@@ -24,8 +21,7 @@ export default function ModalComp({ setShowModal, showModal, user, fontId }) {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    await addFontToCategory(newRel)
-    history.push(`category/${newRel.categoryId}`);
+    addFontToCategory(newRel).then();
   };
 
   const handleInputChange = (e) => {

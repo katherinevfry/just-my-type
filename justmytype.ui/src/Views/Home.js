@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router';
 import FontCard from '../Components/FontCard';
 import { BasicBtn, FlexyDiv } from '../Components/styles';
 import { getGoogleFonts } from '../data/categoryData';
@@ -13,14 +14,13 @@ export default function Home({ user }) {
     family: "Germania One"
   });
   const [dbUser, setDbUser] = useState({});
+  const history = useHistory();
 
   useEffect(() => {
     getGoogleFonts().then((resp) => setResp(resp.items));
     getUserByFBKey(user?.multiFactor?.user?.uid).then(setDbUser);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.warn(dbUser);
 
 const getRandom = () => {
   const randomFont = resp[Math.floor(Math.random()*resp.length)];
@@ -32,7 +32,7 @@ const saveUserFont = () => {
     Name: fontFamily.family,
     Style: fontFamily.category || "no style",
     UserId: dbUser?.id
-  }).then(console.warn(resp));
+  }).then(history.push(`myfonts`));
 }
 
   return (

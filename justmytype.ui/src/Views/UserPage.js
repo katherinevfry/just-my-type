@@ -51,7 +51,7 @@ const handleInputChange = (e) => {
       <h2>My Categories</h2>
       {myCategories
       ? myCategories.map((cat) => (
-        <BasicBtn id={cat.id} color="black" onClick={() => history.push(`/category/${cat.id}`)}>{cat.title}</BasicBtn>
+        <BasicBtn id={cat.id} color="black" onClick={() => history.push(`/${cat.title}/${cat.id}`)}>{cat.title}</BasicBtn>
       ))
       : "You have no categories. Why not create one?"
       }
