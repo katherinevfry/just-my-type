@@ -29,7 +29,7 @@ namespace JustMyType.Controllers
         public IActionResult AddFont(Fonts newFont)
         {
             _repo.Add(newFont);
-            return Created($"/api/fonts/{newFont.Id}", newFont);
+            return Created($"/fonts/post/{newFont.Id}", newFont);
         }
 
         [HttpDelete("/fonts/delete/{id}")]

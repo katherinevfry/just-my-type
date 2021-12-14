@@ -7,6 +7,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import firebaseConfig from './data/apiKeys';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(

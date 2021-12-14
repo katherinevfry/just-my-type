@@ -30,7 +30,7 @@ namespace JustMyType.Controllers
         public IActionResult AddCategory(CategoriesFonts newCategoryFont)
         {
             _repo.Add(newCategoryFont);
-            return Created($"/api/categoryFonts/{newCategoryFont.Id}", newCategoryFont);
+            return Created($"/categoryFonts/post/{newCategoryFont.Id}", newCategoryFont);
         }
 
         [HttpDelete("/delete/{id}")]

@@ -17,7 +17,7 @@ const saveFont = (font) => new Promise((resolve, reject) => {
 
 
 const deleteFont = (fontId) => new Promise((resolve, reject) => {
-  axios.post(`${baseUrl}/fonts/delete/${fontId}`)
+  axios.delete(`${baseUrl}/fonts/delete/${fontId}`)
   .then(response => resolve(response.data))
   .catch(error => reject(error));
 });
