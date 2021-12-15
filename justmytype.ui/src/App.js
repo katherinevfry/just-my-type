@@ -19,8 +19,6 @@ useEffect(() => {
   });
 }, []);
 
-console.warn(user);
-
   return (
     <div className="App">
      <Router>
