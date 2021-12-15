@@ -1,5 +1,5 @@
 # Just My Type
-![header image](https://imgur.com/aS5GNlp)
+![header image](https://imgur.com/a/3c7G0KW)
 ## Overview
 Just My Type uses the Google Fonts API to show the user a random font. The user will then either click a button to see a new font, or have the option to save that font. A user must log in to save the font. Once authenticated, a user can sort or categorize their saved fonts (e.g., they could create a new project and save fonts to use in that project.) In my former life as a graphic designer, I spent SO MUCH TIME just looking at fonts. This would have helped me discover new fonts and save them, since I am also a forgetful person above all else.
 
