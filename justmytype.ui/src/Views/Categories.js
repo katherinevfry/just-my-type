@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
 import FontCard from '../Components/FontCard';
-import { BasicBtn } from '../Components/styles';
+import { BasicBtn, FlexyDiv, LongBtn, StyledH1 } from '../Components/styles';
 import { deleteCategory, getCategoryFonts } from '../data/categoryData';
 
 export default function Categories({ user }) {
@@ -22,14 +22,16 @@ const deleteCat = () => {
 
   return (
     <div>
-      <h1>{name}</h1>
+      <StyledH1>{name}</StyledH1>
       {catFonts
       ? catFonts.map((font) => (
+        <FlexyDiv>
         <FontCard id={font.id} styledText={font.name} fontFamily={font.name} isUserFont fontId={font.id} setUpdateSwitch={setUpdateSwitch} handleShow={() => {}} />
+        </FlexyDiv>
       ))
-      : null
+      : <p>Nothing to see here.</p>
       }
-      <BasicBtn role="button" color="blue" onClick={deleteCat}>Delete Category</BasicBtn>
+      <LongBtn role="button" color="#187783" onClick={deleteCat}>Delete Category</LongBtn>
     </div>
   )
 }
