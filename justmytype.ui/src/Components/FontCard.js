@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
-import { BasicBtn, CardDiv, StyledH1, StyledH2 } from './styles'
+import { BasicBtn, CardDiv, InnerDiv, StyledH1, StyledH2 } from './styles'
 import { deleteFont } from '../data/fontData';
 import ModalComp from './Modal';
 import { removeFontFromCategory } from '../data/categoryData';
@@ -28,8 +28,9 @@ export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, 
     <>
       {header()}
     <CardDiv>
+      <InnerDiv>
       {isUserFont
-      ? <StyledH2 fontFamily={fontFamily}>{styledText}</StyledH2>
+      ? <StyledH1 fontFamily={fontFamily}>{styledText}</StyledH1>
       : <StyledH1 fontFamily={fontFamily}>{styledText}</StyledH1>
       }
       {addInfo
@@ -38,10 +39,10 @@ export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, 
       }
       {isUserFont
       ? <div>
-          <BasicBtn role="button" color="#FF2ECC" onClick={deleteUserFont}>Delete</BasicBtn>
+          <BasicBtn role="button" color="#187783" onClick={deleteUserFont}>Delete</BasicBtn>
           {showModalButton
-          ? <BasicBtn role="button" color="#FF2ECC" onClick={() => setShowModal(true)}>Add to Category</BasicBtn>
-          : <BasicBtn role="button" color="#FF2eCC" onClick={removeFromCat}>Remove from Category</BasicBtn>
+          ? <BasicBtn role="button" color="#ef7255" onClick={() => setShowModal(true)}>Category</BasicBtn>
+          : <BasicBtn role="button" color="#ef7255" onClick={removeFromCat}>Remove</BasicBtn>
           }
         </div>
       : null
@@ -50,6 +51,7 @@ export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, 
         ? <ModalComp showModal={showModal} setShowModal={setShowModal} user={user} fontId={fontId} />
         : null
       }
+      </InnerDiv>
       </CardDiv>
     </>
   )

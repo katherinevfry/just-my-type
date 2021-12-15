@@ -1,45 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import {
-  Collapse, Navbar, NavbarToggler, Nav, NavItem
+  Navbar, Nav, NavItem
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import AuthBtn from './AuthBtn';
 import { signInUser, signOutUser } from '../data/auth';
 
+const linkStyle = {
+  margin: "1rem",
+  display: "block",
+  textDecoration: "none",
+  color: "white"
+};
+
 const NavBar = ({ user }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
   const authenticated = () => (
     <>
-        <NavItem>
-          <Link to='/myfonts'>My Fonts</Link>
+        <NavItem className="mx-3">
+          <Link style={linkStyle} to='/myfonts'>My Fonts</Link>
         </NavItem>
     </>
   );
 
   return (
     <div>
-     {user && <Navbar light expand='md' >
-
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto">
-          <NavItem>
-            <Link to="/">Home</Link>
+     <Navbar id="uglyNav" light  >
+          <Nav pills navbar className="d-flex flex-row">
+          <NavItem className="mx-3">
+            <Link style={linkStyle} to="/">Home</Link>
           </NavItem>
-          <NavItem>
-            {authenticated()}
+          <NavItem className="mx-3">
+            {user
+            ? authenticated()
+            : null
+            }
           </NavItem>
-          <NavItem>
-          <AuthBtn onClick={user ? signOutUser : signInUser} buttonText={user ? "Sign Out." : "Sign In."}/>
+          <NavItem className="mx-3">
+          <AuthBtn id="authBtn" onClick={user ? signOutUser : signInUser} buttonText={user ? "Sign Out." : "Sign In."}/>
           </NavItem>
           </Nav>
-        </Collapse>
       </Navbar>
-      }
     </div>
   );
 };

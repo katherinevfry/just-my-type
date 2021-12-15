@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import FontCard from '../Components/FontCard';
-import ModalComp from '../Components/Modal';
-import { BasicBtn, FlexyDiv } from '../Components/styles';
+import { BasicBtn, FlexyDiv, GradBtn, StyledH2 } from '../Components/styles';
 import { createCategory, getUserCategories } from '../data/categoryData';
 import { getUserFonts } from '../data/fontData';
 import { getUserByFBKey } from '../data/userData';
@@ -48,12 +47,12 @@ const handleInputChange = (e) => {
 
   return (
     <div>
-      <h2>My Categories</h2>
+      <StyledH2>My Categories</StyledH2>
       {myCategories
       ? myCategories.map((cat) => (
-        <BasicBtn id={cat.id} color="black" onClick={() => history.push(`/${cat.title}/${cat.id}`)}>{cat.title}</BasicBtn>
+        <GradBtn id={cat.id} onClick={() => history.push(`/${cat.title}/${cat.id}`)}>{cat.title}</GradBtn>
       ))
-      : "You have no categories. Why not create one?"
+      : <p>You have no categories. Why not create one?</p>
       }
       <form id='categoryForm'
          autoComplete='off'
@@ -64,9 +63,9 @@ const handleInputChange = (e) => {
            onChange={handleInputChange}
            >
            </input>
-           <BasicBtn role="submit" color="#A51080">Add Category</BasicBtn>
+           <BasicBtn role="submit" color="#187783">Add Category</BasicBtn>
       </form>
-      <h2>My Fonts</h2>
+      <StyledH2>My Fonts</StyledH2>
     {myFonts
     ? <FlexyDiv>
       {myFonts.map((font) => (
@@ -75,7 +74,7 @@ const handleInputChange = (e) => {
       </>
     ))}
     </FlexyDiv>
-    : "You have no saved fonts"
+    : <p>You have no saved fonts</p>
     }
   
     </div>

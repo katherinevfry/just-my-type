@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
 import FontCard from '../Components/FontCard';
-import { BasicBtn, FlexyDiv } from '../Components/styles';
+import { BasicBtn, FlexyDiv, OuterDiv } from '../Components/styles';
 import { getGoogleFonts } from '../data/categoryData';
 import { saveFont } from '../data/fontData';
 import { getUserByFBKey } from '../data/userData';
@@ -36,15 +36,21 @@ const saveUserFont = () => {
 }
 
   return (
-    <>
-    <div>
-      <FontCard fontFamily={fontFamily.family} addInfo={fontFamily.family} styledText="Just My Type." />
+    <FlexyDiv>
+    <OuterDiv>
+      <div>
       <FlexyDiv>
-      <BasicBtn color="#A51080" role="button" onClick={getRandom}>Get Random Font</BasicBtn>
-      <BasicBtn color="#FF2ECC" role="button" onClick={saveUserFont}>Save Font</BasicBtn>
+        <FontCard fontFamily={fontFamily.family} addInfo={fontFamily.family} styledText="Just My Type." />
       </FlexyDiv>
-    </div>
-    </>
-
+      <FlexyDiv>
+        <BasicBtn color="#ef7255" role="button" onClick={getRandom}>Random</BasicBtn>
+        {user
+        ? <BasicBtn color="#187783" role="button" onClick={saveUserFont}>Save</BasicBtn>
+        : null
+        }
+      </FlexyDiv>
+      </div>
+    </OuterDiv>
+    </FlexyDiv>
   )
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, ModalHeader, ModalBody, Form, Label, Input } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, Form, Label, Input, UncontrolledTooltip } from 'reactstrap';
 import { addFontToCategory, getUserCategories } from '../data/categoryData';
 import { getUserByFBKey } from '../data/userData';
 import { BasicBtn } from './styles';
@@ -34,10 +34,10 @@ export default function ModalComp({ setShowModal, showModal, user, fontId }) {
 
   return (
     <Modal isOpen={showModal} toggle={toggle}>
-    <ModalHeader toggle={toggle}>
+    <ModalHeader id="modalH" toggle={toggle}>
      Add font to category
     </ModalHeader>
-    <ModalBody>
+    <ModalBody id="modalB">
     <Form onSubmit={handleSubmit}>
       <Label>Choose Category</Label>
            <Input name='categoryId'
@@ -53,9 +53,14 @@ export default function ModalComp({ setShowModal, showModal, user, fontId }) {
             </option>
           ))}
         </Input>
-        <BasicBtn color="blue" type='submit'>add</BasicBtn>
+        <BasicBtn id="catBtn" color="#ef7255" type='submit'>add</BasicBtn>
       </Form>
     </ModalBody>
+    <UncontrolledTooltip
+    placement="top"
+    target="catBtn"
+    trigger="click"
+    >Saved to category</UncontrolledTooltip>
   </Modal>
   )
 };
