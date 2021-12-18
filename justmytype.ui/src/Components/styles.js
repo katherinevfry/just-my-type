@@ -54,7 +54,6 @@ justify-content: center;
 `;
 
 export const CardDiv = styled.div`
-border: 1px solid white;
 width: 25rem;
 height: 15rem;
 margin: 20px;
@@ -62,6 +61,7 @@ margin: 20px;
 
 export const OuterDiv = styled.div`
 border: 1px solid white;
+border-radius: 25px;
 margin-top: 40px;
 width: 30rem;
 background: rgb(24,119,131);
