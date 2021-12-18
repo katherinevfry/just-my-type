@@ -23,6 +23,6 @@ Just My Type uses the Google Fonts API to show the user a random font. The user 
 - Google Fonts API
 
 ## Loom Walkthrough
-**coming soon**
+https://www.loom.com/share/4560855dc22d41f38e2867c709e4c96a
 
 
