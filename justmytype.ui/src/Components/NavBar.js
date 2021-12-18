@@ -30,12 +30,10 @@ const NavBar = ({ user }) => {
           <NavItem className="mx-3">
             <Link style={linkStyle} to="/">Home</Link>
           </NavItem>
-          <NavItem className="mx-3">
             {user
             ? authenticated()
             : null
             }
-          </NavItem>
           <NavItem className="mx-3">
           <AuthBtn id="authBtn" onClick={user ? signOutUser : signInUser} buttonText={user ? "Sign Out." : "Sign In."}/>
           </NavItem>

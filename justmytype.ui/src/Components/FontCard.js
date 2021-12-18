@@ -9,11 +9,11 @@ import { removeFontFromCategory } from '../data/categoryData';
 export default function FontCard({ styledText, addInfo, fontFamily, isUserFont, fontId, setUpdateSwitch, user, showModalButton }) {
   const [showModal, setShowModal] = useState(false);
   const header = () => (
-    <head>
+    <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href={`https://fonts.googleapis.com/css2?family=${fontFamily}&display=swap`}rel="stylesheet" />
-      </head>
+      </>
     );
 
     const deleteUserFont = () => {
